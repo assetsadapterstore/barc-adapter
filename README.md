@@ -13,7 +13,7 @@ openwtester包下的测试用例已经集成了openwallet钱包体系，创建co
 #wallet api url
 ServerAPI = "https://localhost:8080"
 # ChainID
-ChainID = ""
+ChainID = "8ac5756ab6f78c1ae92d9654072eecf7fc81b418a05073ad067095061067e3c9"
 
 ```
 

@@ -46,7 +46,7 @@ func TestWalletManager_GetWalletInfo(t *testing.T) {
 
 	tm := testInitWalletManager()
 
-	wallet, err := tm.GetWalletInfo(testApp, "WCNAKaBaUAPKdbN2vrdC6Cvx2RJQTdknu2")
+	wallet, err := tm.GetWalletInfo(testApp, "WF3Bq2FJ444BH1ZHfjuDRC72bhqH8NRNLb")
 	if err != nil {
 		log.Error("unexpected error:", err)
 		return
@@ -75,8 +75,8 @@ func TestWalletManager_CreateAssetsAccount(t *testing.T) {
 
 	tm := testInitWalletManager()
 
-	walletID := "WHx7NV9em582AXU5tu8r5xdpcuBjrtMTUZ"
-	account := &openwallet.AssetsAccount{Alias: "btstesterbob", WalletID: walletID, Required: 1, Symbol: "BAR", IsTrust: true}
+	walletID := "WKMowUwix8Eo6Y1rLcnEcA8oszVRL2C1tj"
+	account := &openwallet.AssetsAccount{Alias: "zbcat111", WalletID: walletID, Required: 1, Symbol: "BAR", IsTrust: true}
 	account, address, err := tm.CreateAssetsAccount(testApp, walletID, "12345678", account, nil)
 	if err != nil {
 		log.Error(err)
@@ -113,7 +113,7 @@ func TestWalletManager_CreateAddress(t *testing.T) {
 	tm := testInitWalletManager()
 
 	walletID := "WHx7NV9em582AXU5tu8r5xdpcuBjrtMTUZ"
-	accountID := "6oRFUog3K55AUBSRitm9QUsJ4cxKBgzm8Y58CntxJwCb"
+	accountID := "WHx7NV9em582AXU5tu8r5xdpcuBjrtMTUZ"
 	address, err := tm.CreateAddress(testApp, walletID, accountID, 1)
 	if err != nil {
 		log.Error(err)
@@ -129,8 +129,15 @@ func TestWalletManager_GetAddressList(t *testing.T) {
 
 	tm := testInitWalletManager()
 
-	walletID := "WHx7NV9em582AXU5tu8r5xdpcuBjrtMTUZ"
-	accountID := "6oRFUog3K55AUBSRitm9QUsJ4cxKBgzm8Y58CntxJwCb"
+	// walletID := "W4oCSSCw9YrCSy4M959ChKM7BRphgZVeMw"
+	// accountID := "DZazoeronbtQRkm6gEyqDubvYwCNGXUWP2fzBx3bSBrJ" //zbalice111 BAR6SsHffQqnnBMM3wg8LKQdRc7rMJwkvye2JB8LTihCJXAJGLs6z
+
+	// walletID := "WKMowUwix8Eo6Y1rLcnEcA8oszVRL2C1tj"
+	// accountID := "AszEboNMoJRbrLZtuSdci312StDrtrLuxwbrc38o6moH" //zbbob111 BAR7VZ6vU5T4Yfcd1oQnwk8nVWTGg1cT8CRB7cswhmKNXUCTc4KtU
+
+	walletID := "WKMowUwix8Eo6Y1rLcnEcA8oszVRL2C1tj"
+	accountID := "Fo8dJUXcHA1n3Q6Cegr5ou2pppe9fpsd7kqSh4GsyXDc" //zbcat111 BAR5s3e7wthf4BQ61JjDCegZvt9LDEtmUJJKsFfgRnrrgjJG66BLr
+
 	list, err := tm.GetAddressList(testApp, walletID, accountID, 0, -1, false)
 	if err != nil {
 		log.Error("unexpected error:", err)
