@@ -25,7 +25,6 @@ func testInitWalletManager() *openw.WalletManager {
 	}
 
 	return openw.NewWalletManager(tc)
-	//tm.Init()
 }
 
 func TestWalletManager_CreateWallet(t *testing.T) {
