@@ -128,14 +128,14 @@ func TestWalletManager_GetAddressList(t *testing.T) {
 
 	tm := testInitWalletManager()
 
-	// walletID := "W4oCSSCw9YrCSy4M959ChKM7BRphgZVeMw"
-	// accountID := "DZazoeronbtQRkm6gEyqDubvYwCNGXUWP2fzBx3bSBrJ" //zbalice111 BAR6SsHffQqnnBMM3wg8LKQdRc7rMJwkvye2JB8LTihCJXAJGLs6z
+	walletID := "W4oCSSCw9YrCSy4M959ChKM7BRphgZVeMw"
+	accountID := "DZazoeronbtQRkm6gEyqDubvYwCNGXUWP2fzBx3bSBrJ" //zbalice111 BAR6SsHffQqnnBMM3wg8LKQdRc7rMJwkvye2JB8LTihCJXAJGLs6z
 
 	// walletID := "WKMowUwix8Eo6Y1rLcnEcA8oszVRL2C1tj"
 	// accountID := "AszEboNMoJRbrLZtuSdci312StDrtrLuxwbrc38o6moH" //zbbob111 BAR7VZ6vU5T4Yfcd1oQnwk8nVWTGg1cT8CRB7cswhmKNXUCTc4KtU
 
-	walletID := "WKMowUwix8Eo6Y1rLcnEcA8oszVRL2C1tj"
-	accountID := "Fo8dJUXcHA1n3Q6Cegr5ou2pppe9fpsd7kqSh4GsyXDc" //zbcat111 BAR5s3e7wthf4BQ61JjDCegZvt9LDEtmUJJKsFfgRnrrgjJG66BLr
+	// walletID := "WKMowUwix8Eo6Y1rLcnEcA8oszVRL2C1tj"
+	// accountID := "Fo8dJUXcHA1n3Q6Cegr5ou2pppe9fpsd7kqSh4GsyXDc" //zbcat111 BAR5s3e7wthf4BQ61JjDCegZvt9LDEtmUJJKsFfgRnrrgjJG66BLr
 
 	list, err := tm.GetAddressList(testApp, walletID, accountID, 0, -1, false)
 	if err != nil {
