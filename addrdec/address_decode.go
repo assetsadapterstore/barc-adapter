@@ -26,8 +26,14 @@ type AddressDecoderV2 struct {
 	IsTestNet bool
 }
 
+//NewAddressDecoder 地址解析器
+func NewAddressDecoderV2() *AddressDecoderV2 {
+	decoder := AddressDecoderV2{}
+	return &decoder
+}
+
 // AddressDecode decode address
-func (dec *AddressDecoderV2) AddressDecode(pubKey string) ([]byte, error) {
+func (dec *AddressDecoderV2) AddressDecode(pubKey string, opts ...interface{}) ([]byte, error) {
 
 	var pubKeyMaterial string
 	if strings.HasPrefix(pubKey, BARPublicKeyR1Prefix) {
@@ -52,7 +58,7 @@ func (dec *AddressDecoderV2) AddressDecode(pubKey string) ([]byte, error) {
 }
 
 // AddressEncode encode address
-func (dec *AddressDecoderV2) AddressEncode(hash []byte) string {
+func (dec *AddressDecoderV2) AddressEncode(hash []byte, opts ...interface{}) (string, error) {
 	data := addressEncoder.CatData(hash, addressEncoder.CalcChecksum(hash, BAR_mainnetPublic.ChecksumType))
-	return string(BAR_mainnetPublic.Prefix) + addressEncoder.EncodeData(data, "base58", BAR_mainnetPublic.Alphabet)
+	return string(BAR_mainnetPublic.Prefix) + addressEncoder.EncodeData(data, "base58", BAR_mainnetPublic.Alphabet), nil
 }
