@@ -86,7 +86,6 @@ func NewConfig(symbol string) *WalletConfig {
 	c.dbPath = filepath.Join("data", strings.ToLower(c.Symbol), "db")
 	//钱包服务API
 	c.ServerAPI = ""
-	c.ChainID = ""
 
 	//创建目录
 	//file.MkdirAll(c.dbPath)
