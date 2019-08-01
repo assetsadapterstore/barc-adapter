@@ -19,7 +19,6 @@ import (
 	"github.com/assetsadapterstore/barc-adapter/addrdec"
 	"github.com/blocktree/bitshares-adapter/bitshares"
 	"github.com/blocktree/openwallet/log"
-	"github.com/blocktree/openwallet/openwallet"
 	bts "github.com/denkhaus/bitshares"
 	"github.com/denkhaus/bitshares/config"
 )
@@ -32,9 +31,9 @@ type WalletManager struct {
 	*bitshares.WalletManager
 }
 
-func NewWalletManager(cacheManager openwallet.ICacheManager) *WalletManager {
+func NewWalletManager() *WalletManager {
 	wm := WalletManager{}
-	wm.WalletManager = bitshares.NewWalletManager(cacheManager)
+	wm.WalletManager = bitshares.NewWalletManager(nil)
 	wm.Config = bitshares.NewConfig(Symbol)
 	wm.Decoder = NewAddressDecoder(&wm)
 	wm.DecoderV2 = addrdec.NewAddressDecoderV2()
