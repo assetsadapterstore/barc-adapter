@@ -20,6 +20,12 @@ import (
 	"github.com/blocktree/bitshares-adapter/bitshares"
 	"github.com/blocktree/openwallet/log"
 	"github.com/blocktree/openwallet/openwallet"
+	bts "github.com/denkhaus/bitshares"
+	"github.com/denkhaus/bitshares/config"
+)
+
+const (
+	ChainIDBAR = "8ac5756ab6f78c1ae92d9654072eecf7fc81b418a05073ad067095061067e3c9"
 )
 
 type WalletManager struct {
@@ -33,5 +39,18 @@ func NewWalletManager(cacheManager openwallet.ICacheManager) *WalletManager {
 	wm.Decoder = NewAddressDecoder(&wm)
 	wm.DecoderV2 = addrdec.NewAddressDecoderV2()
 	wm.Log = log.NewOWLogger(wm.Symbol())
+	wm.Api = bitshares.NewWalletClient(wm.Config.ServerAPI, wm.Config.WalletAPI, false)
+	wm.WebsocketAPI = NewWebsocketAPI(wm.Config.ServerWS)
 	return &wm
+}
+
+func NewWebsocketAPI(api string) bts.WebsocketAPI {
+	config.Add(config.ChainConfig{
+		Name:      "BAR",
+		CoreAsset: "BAR",
+		Prefix:    "BAR",
+		ID:        ChainIDBAR,
+	})
+	config.SetCurrent(ChainIDBAR)
+	return bts.NewWebsocketAPI(api)
 }
