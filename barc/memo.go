@@ -9,7 +9,7 @@ import (
 
 //Decrypt calculates a shared secret by the receivers private key
 //and the senders public key, then decrypts the given memo message.
-func Decrypt(msg, fromPub, toPub, wif string) (string, error) {
+func Decrypt(msg, fromPub, toPub string, nonce uint64, wif string) (string, error) {
 	var buf types.Buffer
 	ret := config.FindByID(ChainIDBAR)
 	if ret == nil {
@@ -37,6 +37,7 @@ func Decrypt(msg, fromPub, toPub, wif string) (string, error) {
 		From:    *from,
 		To:      *to,
 		Message: buf,
+		Nonce:   types.UInt64(nonce),
 	}
 
 	priv, err := types.NewPrivateKeyFromWif(wif)

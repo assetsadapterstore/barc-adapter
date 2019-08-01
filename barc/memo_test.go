@@ -8,6 +8,7 @@ func TestDecrypt(t *testing.T) {
 		fromPub string
 		toPub   string
 		wif     string
+		nonce   uint64
 	}
 	tests := []struct {
 		name    string
@@ -19,7 +20,8 @@ func TestDecrypt(t *testing.T) {
 			name: "test1",
 			want: "hello boy",
 			args: args{
-				msg:     "e8e88ad5de168283c29a71635fe1d065",
+				msg:     "17d0ac3874548d7c4ef56236698d719e",
+				nonce:   5577006791947779410,
 				fromPub: "BAR6fpcoYK72BxsYYRwcBEPGuVoGhy2Yki2YCNfnCZCYxL5xp56Hh",
 				toPub:   "BAR6icdz8dWibXRz8PcDn9RMupFkPbwHQ4toHxP8UmLm2hDtMHUKr",
 				wif:     "",
@@ -28,7 +30,7 @@ func TestDecrypt(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got, err := Decrypt(tt.args.msg, tt.args.fromPub, tt.args.toPub, tt.args.wif)
+			got, err := Decrypt(tt.args.msg, tt.args.fromPub, tt.args.toPub, tt.args.nonce, tt.args.wif)
 			if (err != nil) != tt.wantErr {
 				t.Errorf("Decrypt() error = %v, wantErr %v", err, tt.wantErr)
 				return
