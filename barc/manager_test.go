@@ -15,7 +15,9 @@
 
 package barc
 
-import "github.com/blocktree/bitshares-adapter/bitshares"
+import (
+	"github.com/blocktree/bitshares-adapter/bitshares"
+)
 
 var (
 	tw *WalletManager
@@ -26,8 +28,11 @@ func init() {
 }
 
 func testNewWalletManager() *WalletManager {
-	wm := NewWalletManager(nil)
-	wm.Config.ServerAPI = "http://47.244.179.69:20009/rpc"
-	wm.Api = bitshares.NewWalletClient(wm.Config.ServerAPI, "", false)
+	wm := NewWalletManager()
+	wm.Config.ServerAPI = ""
+	wm.Config.ServerWS = ""
+	wm.Api = bitshares.NewWalletClient(wm.Config.ServerAPI, "", true)
+	wm.WebsocketAPI = NewWebsocketAPI(wm.Config.ServerWS)
+
 	return wm
 }

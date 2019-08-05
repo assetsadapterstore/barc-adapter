@@ -59,9 +59,9 @@ func TestSubscribeAddress_BAR(t *testing.T) {
 		endRunning = make(chan bool, 1)
 		symbol     = "BAR"
 		addrs      = map[string]string{
-			"1.2.814225":  "sender",
-			"1.2.1021":    "receiver", //alice
-			"1.2.1034":    "receiver", //bob
+			"zbalice111":  "sender",
+			"zbtest222":   "receiver",
+			"zbbob111":    "receiver", //bob
 			"1.2.1588722": "sender",
 		}
 	)
@@ -97,7 +97,7 @@ func TestSubscribeAddress_BAR(t *testing.T) {
 	}
 
 	scanner := assetsMgr.GetBlockScanner()
-	scanner.SetRescanBlockHeight(1620956)
+	scanner.SetRescanBlockHeight(1681759)
 
 	if scanner == nil {
 		log.Error(symbol, "is not support block scan")
