@@ -10,6 +10,15 @@ import (
 //Decrypt calculates a shared secret by the receivers private key
 //and the senders public key, then decrypts the given memo message.
 func Decrypt(msg, fromPub, toPub string, nonce uint64, wif string) (string, error) {
+
+	if len(msg) == 0 || len(fromPub) == 0 || len(toPub) == 0 {
+		return "", nil
+	}
+
+	if len(wif) == 0 {
+		return "", fmt.Errorf("wif cannot be empty")
+	}
+
 	var buf types.Buffer
 	ret := config.FindByID(ChainIDBAR)
 	if ret == nil {
