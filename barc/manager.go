@@ -16,7 +16,6 @@
 package barc
 
 import (
-	"github.com/assetsadapterstore/barc-adapter/addrdec"
 	"github.com/blocktree/bitshares-adapter/bitshares"
 	"github.com/blocktree/openwallet/log"
 	bts "github.com/denkhaus/bitshares"
@@ -36,7 +35,7 @@ func NewWalletManager() *WalletManager {
 	wm.WalletManager = bitshares.NewWalletManager(nil)
 	wm.Config = bitshares.NewConfig(Symbol)
 	wm.Decoder = NewAddressDecoder(&wm)
-	wm.DecoderV2 = addrdec.NewAddressDecoderV2()
+	wm.DecoderV2 = NewAddressDecoder(&wm)
 	wm.Log = log.NewOWLogger(wm.Symbol())
 	wm.Api = bitshares.NewWalletClient(wm.Config.ServerAPI, wm.Config.WalletAPI, false)
 	wm.WebsocketAPI = NewWebsocketAPI(wm.Config.ServerWS)
